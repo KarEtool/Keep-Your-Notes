@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+    <style type="text/css">
+        div{
+            width: 355px;
+            height: 355px;
+            margin: 100px auto;
+            border-radius: 5px;
+            border: 1px solid white;
+            background: #9a9a9f;
+            padding: 25px;
+        }
+        input:focus{
+            outline: none;
+        }
+        table{
+            margin: 50px 0 0 0;
+            font-family:'Comic Sans MS';
+        }
+        body{
+            background: url("image/1.png")no-repeat center;
+        }
+        form div table input#kadi,input#email,input#sif1,input#sif2,input#control{
+            border-radius: 3px;
+            border: none;
+            font-family: "Comic Sans MS";
+        }
+        form div table label{
+            width: 150px;
+            height: 30px;
+            display: inline-block;
+            position: relative;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 2px 0;
+            box-sizing: border-box;
+            border: 2px solid #555;
+
+            /* user-select none */
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+        }
+        form div table label:after{
+            top: 0px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: tranparent;
+            content: "";
+
+            display: block;
+            z-index: 999;
+        }
+        input#kod{
+            width: 150px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 3px;
+            background: white;
+            margin: 0;
+            padding: 0;
+            border:none;
+            z-index: 1;
+            position: relative;
+            outline: none;
+            display: inline-block;
+        }
+        form div table input#kayitol,input#reset
+        {
+            width: 85px;
+            height: 30px;
+            border-radius: 8px;
+            margin: 0 7px;
+            border: none;
+            font: bold 13px "Comic Sans MS";
+            cursor: pointer;
+        }
+        form div table input#kayitol:hover,input#reset:hover
+        {
+            color: white;
+            background: #666;
+        }
+        figure img{
+            margin: -10px 150px -30px 90px;
+        }
+        img{
+            border-radius: 50px;
+        }
+        footer{
+            margin: 5px 0 0;
+            text-align: center;
+        }
+        font a{
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript">        
+     function koduret(){
+        var kodlar="";
+        for(var i=1;i<=8;i++)
+        {
+          if(Math.round(Math.random())==1)
+          {
+            kodlar=kodlar+String.fromCharCode(65+25*Math.random());
+          }
+            else
+          {
+            kodlar=kodlar+String.fromCharCode(48+9*Math.random());
+          }
+        }
+         var kod=document.getElementById("kod");
+         kod.value=kodlar;
+        }
+        function kodgonder(){
+          var formData = new FormData();
+          formData.append("code",kodlar);
+
+          var request = new XMLHttpRequest();
+          request.open("POST","register2.php");
+          request.send(formData);
+        }
+    </script>
+</head>
+
+<body onLoad="koduret()" id="govde">
+    <form action="register2.php" method="POST">
+    <div>
+        <figure><img src="image/3.jpg" width="100" height="100" /></figure>   <table width="355" border="0">
+  <tbody>
+    <tr>
+      <td width="150" height="25">Kullanıcı Adı</td>
+      <td width="5">:</td>
+      <td width="186"><input id="kadi" type="text" name="nickname" required placeholder="Kullanıcı adınızı giriniz." maxlength="20"></td>
+    </tr>
+      <tr>
+      <td height="25">E-mail</td>
+      <td>:</td>
+      <td><input id="email" type="email" required="required" name="email" placeholder="E-mail adresinizi giriniz."></td>
+    </tr>
+    <tr>
+      <td height="25">Şifre</td>
+      <td>:</td>
+      <td><input id="sif1" type="password" name="password1" required maxlength="20"></td>
+    </tr>
+    <tr>
+      <td height="25">Şifreyi Tekrarla</td>
+      <td>:</td>
+      <td><input id="sif2" type="password" name="password2" required maxlength="20"></td>
+    </tr>
+      <tr>
+      <td height="25"><label><input type="text" readonly name="code" id="kod" max="8"/></label></td>
+      <td></td>
+    <td><input type="text" id="control" name="codeCtrl" required max="8" placeholder="Doğrulama kodunu giriniz." /></td>
+    </tr>
+      <tr>
+      <td height="25"></td>
+      <td></td>
+    <td><input type="submit" onclick="kodgonder()" id="kayitol" value="Kayıt ol" onClick="control()"><input id="reset" type="reset" onClick="koduret()"></td>
+    </tr>
+  </tbody>
+</table>
+        <footer>
+            <font face="Comic Sans MS" size="2" color="white">Eğer hesabın varsa <a href="login.html">giriş yap</a>.</font>
+        </footer>
+    </div>
+    </form>
+</body>
+</html>
