@@ -12,7 +12,7 @@ function sef_link($dosya)//Dosya adını düzeltme
 
 include 'connectUser.php';
 
-if(!empty($_FILES)){
+if(!empty($_FILES["myfile"]["tmp_name"])){
     $dizin = 'C:/xampp/htdocs/BasitKayit/Not_Site/imageUsers/';
     $pptype = $_FILES['myfile']['type'];
     $nickname = $_SESSION['nickname'];
@@ -24,11 +24,14 @@ if(!empty($_FILES)){
     $myfile=$_FILES["myfile"]["name"]==''?'':$rand1.'-'.$yuklenecek_dosya1;
     move_uploaded_file($_FILES["myfile"]["tmp_name"],$dizin.$rand1.'-'.$yuklenecek_dosya1);
     
-    $reg = "INSERT INTO pp(nickname,namee,typee,pp) VALUES ('$nickname','$ppname','$pptype','$myfile')";
+    //$reg = "INSERT INTO pp(nickname,namee,typee,pp) VALUES ('$nickname','$ppname','$pptype','$myfile')";
+    $reg = "UPDATE pp SET namee='$ppname', typee='$pptype', pp='$myfile' WHERE nickname ='$nickname'";
     mysqli_query($conn,$reg);
     
-    header("Location: http://localhost/BasitKayit/Not_Site/index.php");
-    }else{};
+    
+    }else if(empty($myfile)){
+        echo '<script type="text/javascript">alert("YÜKLEMEYE ÇALIŞTIĞINIZ DOSYA BOŞ!!!");</script>';   
+    };
 
 
 ?>

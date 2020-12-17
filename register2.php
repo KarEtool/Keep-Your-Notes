@@ -36,7 +36,10 @@ if($num == 1){
     $reg = "INSERT INTO users(nickname,email,password) VALUES ('$Pnickname','$Pemail','$Ppassword1')";
     mysqli_query($conn,$reg);
     $_SESSION['nickname'] = $Pnickname;
-    //header("Location http://localhost/Basit%20Kay%C4%B1t/index.php");
+    
+    $ppnick = "INSERT INTO pp(nickname,namee,typee,pp) VALUES ('$Pnickname','','','')";
+    mysqli_query($conn,$ppnick);
+    
     echo '<script type="text/javascript">window.location.assign("http://localhost/BasitKayit/Not_Site/index.php");</script>';
 
 

@@ -45,7 +45,7 @@ include 'connectUser.php';
       <td>:</td>
       <form enctype="multipart/form-data" action="addpp.php" method="POST">
       <td align="center"><input type="file" name="myfile" ></td>
-      <td align="center"><input type="submit" value="Yükle" name="submit"/></td>
+      <td align="center" target="_top"><input type="submit" value="Yükle" name="submit"/></td>
     </form>
     </tr>
   

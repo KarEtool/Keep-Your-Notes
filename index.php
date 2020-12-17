@@ -44,7 +44,30 @@ $img = $row[4];
                 <li><a href="iletisim.html" target="main">İletişim</a></li>
             </ul>
         </nav>
-        <aside></aside>
+        <aside>
+        <ul>
+                        <?php 
+                    $nickname = $_SESSION['nickname'];
+                    
+                    $s2 = "SELECT * FROM notes WHERE nickname ='$nickname'"; 
+                    $result = mysqli_query($conn,$s2);
+                    $num = mysqli_num_rows($result);
+
+                    if($num > 0){
+                        while($row2 = $result->fetch_assoc()){?>
+                            <ul>
+                            <h1><?php echo $row2['title']?></h1>
+                            <li style="color:<?php echo $row2['color'];?>"><?php echo $row2['note'];?></li>
+                            </ul>
+
+
+                <?php 
+                        };
+
+
+                    };?>
+        </ul>
+        </aside>
         <main>
             <iframe name="main" width="740" height="640" frameborder="0" scrolling="no">
             </iframe>

@@ -8,11 +8,14 @@
 
 <body>
 <main>
+  
     <section>
       <article>
       <div><h2>Konu:</h2>
-      <textarea id="konu" maxlength="100" required></textarea></div>
-    <div><font size="2" face="Tahoma"><b>Yazı Rengi :</b></font> <input type="color" id="color">
+        <form action="enterNote.php" method="POST">
+      <textarea id="konu" name="title" maxlength="100" required></textarea>
+    </div>
+    <div><font size="2" face="Tahoma"><b>Yazı Rengi :</b></font> <input type="color" name="color" id="color">
       <input type="button" id="bold" value="B">
       <input type="button" id="italik" value="I">
       <input type="button" id="under" value="U">
@@ -24,11 +27,13 @@
         <option value="16px">16px</option>
         <option value="18px">18px</option>
       </select>
-      <input type="search" placeholder="Search">
-      <input type="button" value="Ara" id="ara"></div>
-      <textarea id="metin"></textarea>
+      <input type="submit" value="Kaydet" id="ara"></div>
+      <textarea id="metin" name="note"></textarea>
+    </form>
       </article>
     </section>
+  
 </main>
 </body>
+
 </html>
